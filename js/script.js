@@ -10,9 +10,7 @@ const audio = new Audio("../assets/audio.mp3")
 
 const size = 30;
 
-let initialPosition = [{ x: 0, y: 0 }];
-
-let snake = [initialPosition]
+let snake = [{ x: 270, y: 0 }]
 
 const incrementScore = () => {
     score.innerHTML  = parseInt(score.innerHTML) + 10
@@ -55,10 +53,12 @@ const drawFood = () => {
 }
 
 const drawSnake = () => {
+    ctx.fillStyle = "#7812d8";
 
     snake.forEach((position, index) => {
 
         if (index == snake.length - 1) {
+            ctx.fillStyle = "yellow"
         }
         ctx.fillRect(position.x, position.y, size, size)
     })
@@ -161,7 +161,7 @@ const gameLoop = () => {
 
     loopId = setTimeout(() => {
         gameLoop()
-    }, 180)
+    }, 100)
 }
 
 gameLoop()
@@ -189,7 +189,7 @@ buttonPlay.addEventListener("click" , () => {
     menu.style.display = "none"
     canvas.style.filter = "none"
 
-    snake = [initialPosition]
+    snake = [{ x: 270, y: 0 }]
 })
 
 
